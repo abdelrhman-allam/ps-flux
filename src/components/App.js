@@ -5,7 +5,7 @@ import Header from "./common/Header";
 import CoursesPage from "./CoursesPage";
 import { Route, Switch, Redirect } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
-import ManageCoursePage from "./manageCoursePage";
+import ManageCoursePage from "./ManageCoursePage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

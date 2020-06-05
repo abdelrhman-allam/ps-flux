@@ -18,7 +18,7 @@ function CourseForm(props) {
         id="author"
         name="authorId"
         label="Author"
-        value={props.course.authorId || " "}
+        value={props.course.authorId}
         onChange={props.onChange}
         options={props.authors.map((author) => {
           return { value: author.id, title: author.name };
