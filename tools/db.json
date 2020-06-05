@@ -109,6 +109,14 @@
       "authorId": 2,
       "category": "Web",
       "createdAt": 1591348209119
+    },
+    {
+      "id": 16,
+      "slug": "coca",
+      "title": "Coca",
+      "authorId": 1,
+      "category": "JS",
+      "createdAt": 1591348406176
     }
   ],
   "authors": [
