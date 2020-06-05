@@ -3,10 +3,12 @@ import CourseForm from "./CourseForm";
 import courseStore from "../stores/courseStore";
 import * as courseActions from "../actions/courseActions";
 import { toast } from "react-toastify";
+import { getAuthors } from "../api/authorApi";
 
 const ManageCoursePage = (props) => {
   const [errors, setErrors] = useState({});
   const [courses, setCourses] = useState(courseStore.getCourses());
+  const [authors, setAuthors] = useState([]);
   const [course, setCourse] = useState({
     id: null,
     slug: "",
@@ -23,9 +25,10 @@ const ManageCoursePage = (props) => {
     } else if (slug) {
       setCourse(courseStore.getCourseBySlug(slug));
     }
+    getAuthors().then((_authors) => setAuthors(_authors));
 
     return () => courseStore.removeChangeListener(onChange);
-  }, [courses.length, props.match.params.slug]);
+  }, [authors.length, courses.length, props.match.params.slug]);
 
   function onChange() {
     setCourses(courseStore.getCourses());
@@ -61,6 +64,7 @@ const ManageCoursePage = (props) => {
       <h2>Manage Course</h2>
       <CourseForm
         course={course}
+        authors={authors}
         onChange={handleChange}
         onSubmit={handleSubmit}
         errors={errors}
