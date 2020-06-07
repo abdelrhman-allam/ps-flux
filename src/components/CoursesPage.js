@@ -3,20 +3,19 @@ import courseStore from "../stores/courseStore";
 import { getAuthors } from "../api/authorApi";
 import CourseList from "./CourseList";
 import { Link } from "react-router-dom";
-import store from "../stores/courseStore";
 import { loadCourses, deleteCourse } from "../actions/courseActions";
 
 function CoursesPage() {
-  const [courses, setCourses] = useState(store.getCourses());
+  const [courses, setCourses] = useState(courseStore.getCourses());
   const [authors, setAuthors] = useState([]);
 
   useEffect(() => {
-    store.addChangeListener(onChange);
+    courseStore.addChangeListener(onChange);
     getAuthors().then((_authors) => setAuthors(_authors));
     if (courseStore.getCourses().length === 0) loadCourses();
 
     return () => {
-      store.removeChangeListener(onChange);
+      courseStore.removeChangeListener(onChange);
     };
   }, []);
 
